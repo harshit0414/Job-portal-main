@@ -100,21 +100,28 @@ export const login = async (req, res) => {
             profile: user.profile
         }
 
-        return res.status(200).cookie("token", token, { maxAge: 1 * 24 * 60 * 60 * 1000, httpsOnly: true, sameSite: 'strict' }).json({
-            message: `Welcome back ${user.fullname}`,
-            user,
-            success: true
-        })
+        return res.status(200).cookie("token", token, {
+    httpOnly: true,
+    secure: true,           // required for https (Vercel)
+    sameSite: "none",       // required for cross-domain
+    maxAge: 1 * 24 * 60 * 60 * 1000
+}).json({
+    message: `Welcome back ${user.fullname}`,
+    user,
+    success: true
+});
     } catch (error) {
         console.log(error);
     }
 }
 export const logout = async (req, res) => {
     try {
-        return res.status(200).cookie("token", "", { maxAge: 0 }).json({
-            message: "Logged out successfully.",
-            success: true
-        })
+        return res.status(200).cookie("token", "", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+    maxAge: 0
+})
     } catch (error) {
         console.log(error);
     }
