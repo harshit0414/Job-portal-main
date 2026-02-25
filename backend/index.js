@@ -16,7 +16,10 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 const corsOptions = {
-    origin:'https://jobportal-frontend-one-rho.vercel.app',
+    origin:[
+    "https://jobportal-frontend-one-rho.vercel.app",
+    "https://jobportal-frontend-id4d6c057-harshit0414s-projects.vercel.app"
+  ],
     credentials:true
 }
 
