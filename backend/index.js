@@ -15,12 +15,14 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
-const corsOptions = {
-    origin:'https://jobportal-frontend-i4d46c057-harshit0414s-projects.vercel.app',
-    credentials:true
-}
 
-app.use(cors(corsOptions));
+
+app.use(cors({
+  origin: (origin, callback) => {
+    callback(null, origin);
+  },
+  credentials: true
+}));
 
 const PORT = process.env.PORT || 3000;
 
@@ -35,3 +37,4 @@ app.use("/api/v1/application", applicationRoute);
 
 
 export default app;
+
