@@ -19,7 +19,10 @@ app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 
 app.use(cors({
-  origin: "https://job-portal-frontend.onrender.com",
+  origin: [
+    "https://job-portal-frontend.onrender.com",
+    "https://job-portal-3nky.onrender.com"
+  ],
   credentials: true
 }));
 
@@ -41,6 +44,7 @@ app.use("/api/v1/application", applicationRoute);
 
 
 export default app;
+
 
 
 
