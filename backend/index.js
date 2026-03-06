@@ -24,7 +24,11 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
 
 
 // api's
@@ -37,5 +41,6 @@ app.use("/api/v1/application", applicationRoute);
 
 
 export default app;
+
 
 
