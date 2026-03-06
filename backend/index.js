@@ -9,6 +9,7 @@ import jobRoute from "./routes/job.route.js";
 import applicationRoute from "./routes/application.route.js";
 
 dotenv.config({});
+connectDB();
 
 const app = express();
 
@@ -40,6 +41,7 @@ app.use("/api/v1/application", applicationRoute);
 
 
 export default app;
+
 
 
 
